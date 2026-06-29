@@ -1,0 +1,27 @@
+---
+- name: Gather Linux Facts
+  hosts: linux
+  gather_facts: true
+
+  tasks:
+    - name: Display Linux information
+      ansible.builtin.debug:
+        msg:
+          - "Hostname: {{ ansible_hostname }}"
+          - "OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+          - "Kernel: {{ ansible_kernel }}"
+          - "IP: {{ ansible_default_ipv4.address }}"
+
+- name: Gather Windows Facts
+  hosts: windows
+  gather_facts: true
+
+  tasks:
+    - name: Display Windows information
+      ansible.builtin.debug:
+        msg:
+          - "Hostname: {{ ansible_hostname }}"
+          - "OS: {{ ansible_distribution }}"
+          - "Version: {{ ansible_distribution_version }}"
+          - "IP: {{ ansible_ip_addresses }}"
+

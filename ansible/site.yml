@@ -1,0 +1,4 @@
+---
+- import_playbook: playbooks/baseline-linux.yml
+
+- import_playbook: playbooks/baseline-windows.yml

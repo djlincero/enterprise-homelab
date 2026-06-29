@@ -1,0 +1,7 @@
+---
+- name: Windows Baseline
+  hosts: windows
+  gather_facts: true
+
+  roles:
+    - windows_baseline

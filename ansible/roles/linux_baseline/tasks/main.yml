@@ -1,0 +1,27 @@
+---
+- name: Update apt package cache
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Upgrade installed packages
+  ansible.builtin.apt:
+    upgrade: dist
+
+- name: Install common Linux packages
+  ansible.builtin.apt:
+    name:
+      - curl
+      - wget
+      - vim
+      - git
+      - htop
+      - tree
+      - unzip
+      - net-tools
+    state: present
+
+- name: Ensure SSH service is running
+  ansible.builtin.service:
+    name: ssh
+    state: started
+    enabled: true

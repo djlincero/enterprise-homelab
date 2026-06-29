@@ -1,0 +1,7 @@
+---
+- name: Configure Linux Baseline
+  hosts: linux
+  become: true
+
+  roles:
+    - linux_baseline

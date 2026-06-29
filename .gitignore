@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# Ansible retry files
+*.retry
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Temporary files
+*.tmp
