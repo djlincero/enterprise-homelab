@@ -1,97 +1,70 @@
 # Enterprise Infrastructure Homelab
 
-> A production-inspired enterprise infrastructure built with virtualization, Windows Server, Linux, networking, security, and Infrastructure as Code.
+> A production-inspired enterprise infrastructure built with Proxmox, pfSense, Windows Server, Linux, Active Directory, Ansible, and Wazuh.
 
 ---
 
 ## Project Overview
 
-This repository documents the design, deployment, automation, and management of a complete enterprise IT infrastructure built in a virtualized environment.
+This project simulates a small-to-medium enterprise environment to develop hands-on experience with systems administration, networking, cybersecurity, automation, and infrastructure documentation.
 
-The objective is to simulate a real-world corporate network while developing practical experience in:
-
-* Windows Server Administration
-* Linux Administration
-* Active Directory
-* DNS & DHCP
-* Public Key Infrastructure (PKI)
-* Network Security
-* Infrastructure Automation with Ansible
-* Security Monitoring
-* Documentation
-* Troubleshooting
-
-This project is continuously improved as new services and automation are added.
+The lab is designed around real-world enterprise practices, including network segmentation, centralized identity management, infrastructure automation, and security monitoring.
 
 ---
 
-# Infrastructure
+## Technologies
 
-## Virtualization
+### Virtualization
 
 * Proxmox VE
 
-## Networking
+### Networking
 
-* pfSense Firewall
-* Multiple VLANs
-* Internal Routing
-* Enterprise Network Segmentation
+* pfSense
+* VLANs
+* DNS
+* DHCP
 
-## Windows Infrastructure
+### Windows Infrastructure
 
 * Active Directory Domain Services
-* Domain Controllers
+* Group Policy
 * Enterprise Certificate Authority
 * File Server
-* Windows 11 Client
 
-## Linux Infrastructure
+### Linux
 
-* Debian Administration Host
-* SSH Management
-* Ansible Automation
+* Debian 13
+* OpenSSH
 
-## Security
+### Automation
+
+* Ansible
+* WinRM
+* SSH
+
+### Security
 
 * Wazuh SIEM
-* Windows Event Monitoring
-* Linux Monitoring
 
 ---
 
-# Automation
+## Current Infrastructure
 
-Automation is performed using Ansible.
-
-Current capabilities include:
-
-* Linux connectivity testing
-* Windows WinRM connectivity
-* Fact gathering
-* Linux baseline configuration
-* Windows baseline configuration
-* Multi-host deployment using `site.yml`
-
----
-
-# Current Project Status
-
-* ✅ Proxmox Infrastructure
-* ✅ pfSense Configuration
-* ✅ VLAN Architecture
-* ✅ Active Directory
-* ✅ Enterprise CA
-* ✅ File Server
-* ✅ Debian Administration Host
-* ✅ Wazuh Deployment
-* ✅ Ansible Controller
-* ✅ Linux Automation
-* ✅ Windows Automation
+| Server     | Purpose                          |
+| ---------- | -------------------------------- |
+| pfSense    | Firewall & Routing               |
+| DC01       | Primary Domain Controller        |
+| DC02       | Secondary Domain Controller      |
+| FS01       | File Server                      |
+| CA01       | Enterprise Certificate Authority |
+| Debian     | Ansible Controller               |
+| Windows 11 | Domain Workstation               |
+| Wazuh      | Security Monitoring              |
 
 ---
 
-# Repository Structure
+## Project Structure
 
 ```text
 enterprise-homelab/
@@ -105,60 +78,49 @@ enterprise-homelab/
 
 ---
 
-# Skills Demonstrated
+## Features
 
-* Enterprise Infrastructure
-* Windows Server Administration
-* Linux Administration
+* Enterprise network segmentation
+* Active Directory domain
+* Centralized DNS and DHCP
+* Enterprise PKI
+* Infrastructure automation with Ansible
+* Linux and Windows administration
+* Security monitoring with Wazuh
+* Professional documentation
+
+---
+
+## Project Status
+
+Current Phase:
+
+**Infrastructure Automation & Documentation**
+
+Completed:
+
+* Proxmox deployment
+* pfSense configuration
 * Active Directory
-* Networking
-* PowerShell
-* Bash
-* Ansible
-* WinRM
-* SSH
-* Infrastructure as Code
-* System Automation
-* Security Monitoring
-* Documentation
+* Windows administration
+* Linux administration
+* WinRM configuration
+* SSH configuration
+* Ansible automation
+* Git version control
+
+Next Steps:
+
+* Architecture diagrams
+* Portfolio website
+* Advanced Ansible roles
+* Monitoring enhancements
+* Backup automation
 
 ---
 
-# Project Roadmap
+## Author
 
-## Phase 1
+Zemlah
 
-* Infrastructure Deployment
-
-## Phase 2
-
-* Enterprise Services
-
-## Phase 3
-
-* Infrastructure Automation
-
-## Phase 4
-
-* Security Hardening
-
-## Phase 5
-
-* Monitoring
-
-## Phase 6
-
-* Documentation & Portfolio
-
----
-
-# Author
-
-Djlincero Zemlah
-
-Enterprise Infrastructure • Systems Administration • Automation • Cybersecurity
-
----
-
-**Project Status:** 🚧 Active Development
-
+Enterprise Infrastructure Homelab Project
