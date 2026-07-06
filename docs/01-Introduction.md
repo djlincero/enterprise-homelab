@@ -1,98 +1,165 @@
 # Enterprise Infrastructure Homelab
 
-## Purpose
+## Overview
 
-This project is a production-inspired enterprise infrastructure built to develop practical skills in systems administration, networking, cybersecurity, and infrastructure automation.
+This project is a fully functional enterprise infrastructure built in a virtualized environment using Proxmox VE. The objective is to gain practical, hands-on experience with enterprise technologies commonly used by Systems Administrators, Infrastructure Engineers, and DevOps professionals.
 
-The environment simulates the core services commonly found in a corporate network while following documentation and automation practices used in professional IT environments.
+Rather than building isolated virtual machines, this project focuses on designing and managing a complete enterprise environment that integrates networking, identity management, automation, security, and documentation.
 
 ---
 
-# Objectives
+# Project Objectives
 
 The primary objectives of this project are:
 
-* Design a segmented enterprise network
-* Deploy Windows and Linux servers
-* Implement Active Directory Domain Services
-* Configure enterprise networking with pfSense
-* Deploy an Enterprise Certificate Authority
-* Configure centralized file services
-* Implement infrastructure automation using Ansible
-* Deploy security monitoring with Wazuh
-* Produce professional documentation
-* Build a portfolio demonstrating practical enterprise administration skills
+* Design and deploy an enterprise virtual infrastructure
+* Build a Microsoft Active Directory environment
+* Implement enterprise networking using pfSense
+* Automate Linux and Windows administration using Ansible
+* Deploy centralized monitoring and security tools
+* Produce professional documentation suitable for a technical portfolio
+* Demonstrate practical infrastructure administration skills
 
 ---
 
 # Infrastructure Overview
 
-The environment consists of multiple virtual machines running on Proxmox VE.
-
-Major components include:
-
-* Proxmox Virtual Environment
-* pfSense Firewall
-* Windows Server 2022
-* Windows 11 Professional
-* Debian Linux
-* Active Directory
-* DNS
-* DHCP
-* Enterprise PKI
-* File Server
-* Wazuh SIEM
-* Ansible Controller
-
----
-
-# Technologies
-
 ## Virtualization
 
 * Proxmox VE
+* Virtual Machines
+* Virtual Networking
+* Snapshots and Backups
 
-## Networking
+---
 
-* pfSense
-* VLANs
+## Network
+
+* pfSense Firewall
+* VLAN Segmentation
 * Static Routing
+* DNS
+* DHCP
 
-## Operating Systems
+---
+
+## Windows Infrastructure
 
 * Windows Server 2022
-* Windows 11 Pro
+* Active Directory Domain Services
+* DNS
+* DHCP
+* Certificate Authority
+* File Server
+
+---
+
+## Linux Infrastructure
+
 * Debian 13
+* SSH Administration
+* Bash
+* Package Management
+* Automation Controller
+
+---
 
 ## Automation
 
 * Ansible
-* SSH
+* Playbooks
+* Roles
+* Inventory Management
 * WinRM
-
-## Security
-
-* Wazuh
-* Windows Event Logging
-* Linux System Monitoring
+* SSH
 
 ---
 
-# Current Status
+## Security
 
-Current project phase:
+* Windows Firewall
+* pfSense Firewall
+* Wazuh SIEM (In Progress)
 
-**Infrastructure Automation**
+---
 
-Completed milestones include:
+# Current Environment
 
-* Enterprise networking
-* Active Directory deployment
-* Linux administration
-* Windows administration
-* WinRM configuration
-* SSH configuration
-* Ansible automation
-* Infrastructure documentation
+| Component             | Status         |
+| --------------------- | -------------- |
+| Proxmox VE            | ✅ Complete     |
+| pfSense               | ✅ Complete     |
+| Active Directory      | ✅ Complete     |
+| DNS                   | ✅ Complete     |
+| DHCP                  | ✅ Complete     |
+| Certificate Authority | ✅ Complete     |
+| File Server           | ✅ Complete     |
+| Debian Linux          | ✅ Complete     |
+| Windows 11 Client     | ✅ Complete     |
+| WinRM                 | ✅ Complete     |
+| Ansible               | ✅ Complete     |
+| Portfolio Website     | ✅ Complete     |
+| Wazuh SIEM            | 🚧 In Progress |
+| Monitoring            | 🚧 Planned     |
 
-Future milestones include monitoring enhancements, security hardening, backup automation, and disaster recovery planning.
+---
+
+# Technologies Used
+
+* Proxmox VE
+* pfSense
+* Windows Server 2022
+* Windows 11
+* Debian 13
+* Active Directory
+* DNS
+* DHCP
+* Certificate Services
+* PowerShell
+* Bash
+* Git
+* GitHub
+* Ansible
+* WinRM
+* SSH
+* Wazuh
+
+---
+
+# Repository Structure
+
+```text
+enterprise-homelab/
+
+├── ansible/
+├── diagrams/
+├── docs/
+├── screenshots/
+├── scripts/
+├── website/
+├── README.md
+├── CHANGELOG.md
+└── LICENSE
+```
+
+---
+
+# Learning Outcomes
+
+This project demonstrates practical experience with:
+
+* Enterprise Infrastructure Design
+* Windows Administration
+* Linux Administration
+* Active Directory
+* Enterprise Networking
+* Infrastructure Automation
+* Systems Documentation
+* Git Version Control
+* Security Monitoring
+
+---
+
+# Project Status
+
+The environment is fully operational and continues to evolve with additional enterprise services, monitoring capabilities, and automation improvements. Future work includes expanding security monitoring with Wazuh, improving documentation, and publishing the project through GitHub and a public portfolio website.
