@@ -1,6 +1,6 @@
 # Enterprise Infrastructure Homelab
 
-![Enterprise Infrastructure Homelab](diagrams/png/00-enterprise-homelab-banner.png)
+![Enterprise Infrastructure Homelab](diagrams/png/01-enterprise-homelab-banner.png)
 
 > A production-inspired enterprise infrastructure built with Proxmox, pfSense, Active Directory, Linux, Windows Server, Ansible, Wazuh SIEM, Prometheus, and Grafana.
 
