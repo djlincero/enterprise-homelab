@@ -25,6 +25,44 @@ The environment follows enterprise best practices including network segmentation
 
 ---
 
+# Architecture
+
+The Enterprise Infrastructure Homelab is designed as a segmented, production-inspired environment integrating virtualization, networking, identity, automation, security monitoring, and observability.
+
+## Complete Enterprise Overview
+
+![Complete Enterprise Overview](diagrams/png/06-complete-enterprise-overview.png)
+
+### Architecture Highlights
+
+- **Proxmox VE** virtualization platform
+- **pfSense** firewall, routing, and VLAN segmentation
+- **Active Directory** with redundant domain controllers
+- **Enterprise PKI** and certificate services
+- **Windows Server** file services
+- **Ansible** infrastructure automation
+- **Wazuh SIEM** centralized security monitoring
+- **Prometheus** infrastructure metrics collection
+- **Grafana** dashboards and visualization
+
+### Network Segmentation
+
+| VLAN | Name | Network |
+|---|---|---|
+| 10 | Management | `10.10.10.0/24` |
+| 20 | Servers | `10.20.20.0/24` |
+| 30 | Users | `10.30.30.0/24` |
+| 40 | DMZ | `10.40.40.0/24` |
+| 50 | Security | `10.50.50.0/24` |
+
+### Detailed Architecture Documentation
+
+For detailed infrastructure diagrams and technical explanations, see:
+
+➡️ [Enterprise Architecture Documentation](docs/12-Architecture.md)
+
+---
+
 # Technologies
 
 ## Virtualization
