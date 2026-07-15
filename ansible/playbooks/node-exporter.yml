@@ -1,0 +1,8 @@
+---
+- name: Deploy and validate Node Exporter
+  hosts: linux
+  become: true
+  gather_facts: true
+
+  roles:
+    - node_exporter

@@ -1,0 +1,35 @@
+---
+- name: Install Node Exporter
+  ansible.builtin.apt:
+    name: "{{ node_exporter_package }}"
+    state: present
+    update_cache: true
+
+- name: Ensure Node Exporter service is enabled and running
+  ansible.builtin.service:
+    name: "{{ node_exporter_service }}"
+    state: started
+    enabled: true
+
+- name: Wait for Node Exporter port
+  ansible.builtin.wait_for:
+    host: "127.0.0.1"
+    port: "{{ node_exporter_port }}"
+    state: started
+    timeout: 15
+
+- name: Query Node Exporter metrics endpoint
+  ansible.builtin.uri:
+    url: "http://127.0.0.1:{{ node_exporter_port }}/metrics"
+    method: GET
+    return_content: false
+    status_code: 200
+  register: node_exporter_metrics
+  changed_when: false
+
+- name: Display Node Exporter validation result
+  ansible.builtin.debug:
+    msg: >-
+      Node Exporter is running successfully on {{ inventory_hostname }}
+      and the metrics endpoint returned HTTP
+      {{ node_exporter_metrics.status }}.
