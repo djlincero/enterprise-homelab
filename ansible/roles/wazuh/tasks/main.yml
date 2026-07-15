@@ -1,0 +1,65 @@
+---
+- name: Check whether Wazuh agent is installed
+  ansible.builtin.stat:
+    path: /var/ossec/bin/wazuh-agentd
+  register: wazuh_agent_binary
+
+- name: Display Wazuh agent installation status
+  ansible.builtin.debug:
+    msg: >-
+      Wazuh agent is
+      {{ 'installed' if wazuh_agent_binary.stat.exists else 'not installed' }}
+      on {{ inventory_hostname }}
+
+- name: Fail safely if Wazuh agent is not installed
+  ansible.builtin.fail:
+    msg: >-
+      Wazuh agent is not installed on {{ inventory_hostname }}.
+      Automatic installation will be added in the next stage.
+  when: not wazuh_agent_binary.stat.exists
+
+- name: Ensure Wazuh agent service is enabled and running
+  ansible.builtin.service:
+    name: "{{ wazuh_agent_service }}"
+    state: started
+    enabled: true
+
+- name: Check connectivity to Wazuh manager agent port
+  ansible.builtin.wait_for:
+    host: "{{ wazuh_manager_ip }}"
+    port: 1514
+    timeout: 5
+    state: started
+
+- name: Check connectivity to Wazuh manager enrollment port
+  ansible.builtin.wait_for:
+    host: "{{ wazuh_manager_ip }}"
+    port: 1515
+    timeout: 5
+    state: started
+
+- name: Check Wazuh agent status
+  ansible.builtin.command:
+    cmd: /var/ossec/bin/wazuh-control status
+  register: wazuh_agent_status
+  changed_when: false
+
+- name: Display Wazuh agent status
+  ansible.builtin.debug:
+    var: wazuh_agent_status.stdout_lines
+- name: Check Wazuh agent connection to manager
+  ansible.builtin.shell: |
+    set -o pipefail
+    grep 'wazuh-agentd.*Connected to the server' /var/ossec/logs/ossec.log | tail -1
+  args:
+    executable: /bin/bash
+  register: wazuh_connection_status
+  changed_when: false
+  failed_when: false
+
+- name: Display Wazuh manager connection status
+  ansible.builtin.debug:
+    msg: >-
+      {{ wazuh_connection_status.stdout
+         if wazuh_connection_status.stdout | length > 0
+         else 'WARNING: No successful Wazuh manager connection found in the agent log.' }}
