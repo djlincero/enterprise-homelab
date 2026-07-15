@@ -1,4 +1,13 @@
 ---
+- name: Install Wazuh agent prerequisites
+  ansible.builtin.apt:
+    name:
+      - curl
+      - gnupg
+      - apt-transport-https
+    state: present
+    update_cache: true
+
 - name: Check whether Wazuh agent is installed
   ansible.builtin.stat:
     path: /var/ossec/bin/wazuh-agentd
@@ -8,15 +17,32 @@
   ansible.builtin.debug:
     msg: >-
       Wazuh agent is
-      {{ 'installed' if wazuh_agent_binary.stat.exists else 'not installed' }}
+      {{ 'already installed' if wazuh_agent_binary.stat.exists else 'not installed and will be deployed' }}
       on {{ inventory_hostname }}
 
-- name: Fail safely if Wazuh agent is not installed
-  ansible.builtin.fail:
-    msg: >-
-      Wazuh agent is not installed on {{ inventory_hostname }}.
-      Automatic installation will be added in the next stage.
+- name: Download Wazuh repository signing key
+  ansible.builtin.get_url:
+    url: "{{ wazuh_repository_key_url }}"
+    dest: /usr/share/keyrings/wazuh.gpg
+    mode: "0644"
   when: not wazuh_agent_binary.stat.exists
+
+- name: Add Wazuh APT repository
+  ansible.builtin.apt_repository:
+    repo: "{{ wazuh_repository }}"
+    filename: wazuh
+    state: present
+  when: not wazuh_agent_binary.stat.exists
+
+- name: Install Wazuh agent
+  ansible.builtin.apt:
+    name: wazuh-agent
+    state: present
+    update_cache: true
+  environment:
+    WAZUH_MANAGER: "{{ wazuh_manager_ip }}"
+  when: not wazuh_agent_binary.stat.exists
+  notify: Restart Wazuh agent
 
 - name: Ensure Wazuh agent service is enabled and running
   ansible.builtin.service:
@@ -47,6 +73,7 @@
 - name: Display Wazuh agent status
   ansible.builtin.debug:
     var: wazuh_agent_status.stdout_lines
+
 - name: Check Wazuh agent connection to manager
   ansible.builtin.shell: |
     set -o pipefail

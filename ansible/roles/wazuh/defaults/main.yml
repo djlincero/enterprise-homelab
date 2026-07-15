@@ -1,3 +1,6 @@
 ---
 wazuh_manager_ip: "10.50.50.10"
 wazuh_agent_service: "wazuh-agent"
+
+wazuh_repository_key_url: "https://packages.wazuh.com/key/GPG-KEY-WAZUH"
+wazuh_repository: "deb https://packages.wazuh.com/4.x/apt/ stable main"
