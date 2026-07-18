@@ -1,0 +1,6 @@
+---
+prometheus_config: /etc/prometheus/prometheus.yml
+
+prometheus_service: prometheus
+
+prometheus_scrape_interval: 15s

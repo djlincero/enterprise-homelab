@@ -1,0 +1,25 @@
+global:
+  scrape_interval: {{ prometheus_scrape_interval }}
+
+scrape_configs:
+
+  - job_name: "prometheus"
+    static_configs:
+      - targets:
+          - "localhost:9090"
+
+  - job_name: "linux"
+
+    static_configs:
+      - targets:
+{% for host in groups['linux'] %}
+          - "{{ hostvars[host]['ansible_host'] }}:9100"
+{% endfor %}
+
+  - job_name: "windows"
+
+    static_configs:
+      - targets:
+{% for host in groups['windows'] %}
+          - "{{ hostvars[host]['ansible_host'] }}:9182"
+{% endfor %}

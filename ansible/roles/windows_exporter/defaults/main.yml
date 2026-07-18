@@ -1,0 +1,11 @@
+---
+windows_exporter_installer: windows_exporter-0.31.3-amd64.msi
+
+windows_exporter_source: "{{ role_path }}/files/{{ windows_exporter_installer }}"
+
+windows_exporter_destination: C:\Temp\{{ windows_exporter_installer }}
+
+windows_exporter_service: windows_exporter
+
+windows_exporter_port: 9182
+

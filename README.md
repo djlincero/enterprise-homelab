@@ -1,245 +1,249 @@
-# Enterprise Infrastructure Homelab
-
-![Enterprise Infrastructure Homelab](diagrams/png/01-enterprise-homelab-banner.png)
-
-> A production-inspired enterprise infrastructure built with Proxmox, pfSense, Active Directory, Linux, Windows Server, Ansible, Wazuh SIEM, Prometheus, and Grafana.
-
-
-
-
 ---
 
-# Project Overview
+# 🤖 Infrastructure Automation
 
-This project simulates a real enterprise IT infrastructure designed to develop practical skills in:
+Infrastructure configuration and deployment are automated using **Ansible**, allowing consistent, repeatable provisioning across Linux and Windows systems.
 
-- Systems Administration
-- Networking
-- Infrastructure Automation
-- Cybersecurity
-- Monitoring
-- Documentation
-- DevOps
+## Automation Features
 
-The environment follows enterprise best practices including network segmentation, centralized authentication, automation, security monitoring, and infrastructure observability.
+- Linux baseline configuration
+- Windows Server baseline configuration
+- Windows Exporter deployment
+- Prometheus deployment and configuration
+- Wazuh Agent deployment
+- Service validation
+- Connectivity testing
+- Role-based Ansible architecture
 
----
-
-# Architecture
-
-The Enterprise Infrastructure Homelab is designed as a segmented, production-inspired environment integrating virtualization, networking, identity, automation, security monitoring, and observability.
-
-## Complete Enterprise Overview
-
-![Complete Enterprise Overview](diagrams/png/06-complete-enterprise-overview.png)
-
-### Architecture Highlights
-
-- **Proxmox VE** virtualization platform
-- **pfSense** firewall, routing, and VLAN segmentation
-- **Active Directory** with redundant domain controllers
-- **Enterprise PKI** and certificate services
-- **Windows Server** file services
-- **Ansible** infrastructure automation
-- **Wazuh SIEM** centralized security monitoring
-- **Prometheus** infrastructure metrics collection
-- **Grafana** dashboards and visualization
-
-### Network Segmentation
-
-| VLAN | Name | Network |
-|---|---|---|
-| 10 | Management | `10.10.10.0/24` |
-| 20 | Servers | `10.20.20.0/24` |
-| 30 | Users | `10.30.30.0/24` |
-| 40 | DMZ | `10.40.40.0/24` |
-| 50 | Security | `10.50.50.0/24` |
-
-### Detailed Architecture Documentation
-
-For detailed infrastructure diagrams and technical explanations, see:
-
-➡️ [Enterprise Architecture Documentation](docs/12-Architecture.md)
-
----
-
-# Technologies
-
-## Virtualization
-
-- Proxmox VE
-
-## Networking
-
-- pfSense
-- VLANs
-- DNS
-- DHCP
-
-## Windows Infrastructure
-
-- Active Directory Domain Services
-- Group Policy
-- Enterprise Certificate Authority
-- File Server
-
-## Linux
-
-- Debian 13
-- Ubuntu Server
-- OpenSSH
-
-## Automation
-
-- Ansible
-- WinRM
-- SSH
-
-## Security
-
-- Wazuh SIEM
-
-## Monitoring
-
-- Node Exporter
-- Prometheus
-- Grafana
-
----
-
-# Current Infrastructure
-
-| Server | Purpose |
-|---------|----------|
-| Proxmox | Virtualization Platform |
-| pfSense | Firewall & Routing |
-| DC01 | Primary Domain Controller |
-| DC02 | Secondary Domain Controller |
-| FS01 | File Server |
-| CA01 | Enterprise Certificate Authority |
-| Debian | Ansible & Monitoring |
-| Windows 11 | Enterprise Workstation |
-| Wazuh | SIEM Platform |
-
----
-
-# Documentation
-
-| Phase | Document |
-|--------|----------|
-| Introduction | docs/01-Introduction.md |
-| Proxmox | docs/02-Proxmox.md |
-| pfSense | docs/03-pfSense.md |
-| Network | docs/04-Network.md |
-| Active Directory | docs/05-ActiveDirectory.md |
-| Enterprise CA | docs/06-CertificateAuthority.md |
-| Ansible | docs/07-Ansible.md |
-| Wazuh SIEM | docs/08-Wazuh.md |
-| Monitoring | docs/09-Monitoring.md |
-| Troubleshooting | docs/11-Troubleshooting.md |
-
----
-
-# Screenshots
-
-The project includes screenshots for every deployment phase.
-
-Topics include:
-
-- Proxmox
-- pfSense
-- Active Directory
-- Windows Administration
-- Linux Administration
-- Ansible Automation
-- Wazuh SIEM
-- Prometheus
-- Grafana
-
----
-
-# Skills Demonstrated
-
-## Infrastructure
-
-- Enterprise Virtualization
-- Enterprise Networking
-- Windows Server Administration
-- Linux Administration
-
-## Automation
-
-- Ansible
-- PowerShell
-- Bash
-- SSH
-- WinRM
-
-## Security
-
-- Active Directory
-- PKI
-- Wazuh SIEM
-- File Integrity Monitoring
-- Security Event Monitoring
-
-## Monitoring
-
-- Prometheus
-- Grafana
-- Node Exporter
-- Enterprise Dashboards
-- Infrastructure Monitoring
-
----
-
-# Project Structure
+### Repository Structure
 
 ```text
-enterprise-homelab/
-├── ansible/
-├── diagrams/
-├── docs/
-├── screenshots/
-├── scripts/
-├── website/
-└── README.md
+ansible/
+├── inventory/
+├── group_vars/
+├── host_vars/
+├── playbooks/
+├── roles/
+│   ├── node_exporter/
+│   ├── prometheus/
+│   ├── windows_exporter/
+│   ├── wazuh/
+│   └── linux_baseline/
+└── site.yml
 ```
 
 ---
 
-# Project Status
+# 📊 Monitoring
 
-## Completed
+The monitoring platform provides centralized visibility into both Windows and Linux infrastructure.
 
-- Proxmox Deployment
-- pfSense Configuration
-- VLAN Segmentation
-- Active Directory
-- Enterprise Certificate Authority
-- Windows Administration
-- Linux Administration
-- SSH Configuration
-- WinRM Configuration
-- Ansible Automation
-- Wazuh SIEM
-- Prometheus Monitoring
-- Grafana Dashboards
+## Components
 
-## Upcoming
+| Component | Purpose |
+|----------|---------|
+| Prometheus | Metrics collection |
+| Node Exporter | Linux metrics |
+| Windows Exporter | Windows metrics |
+| Grafana | Dashboard visualization *(planned/current deployment)* |
 
-- Architecture Diagrams
-- Portfolio Website Improvements
-- Infrastructure Backup
-- Disaster Recovery
-- Final Documentation
+### Metrics Collected
+
+- CPU utilization
+- Memory utilization
+- Disk usage
+- Network traffic
+- Operating system metrics
+- Windows performance counters
+- Linux system metrics
 
 ---
 
-# Author
+# 🛡 Security Monitoring
 
-**Zemlah**
+Security monitoring is implemented using **Wazuh SIEM**.
 
-Enterprise Infrastructure Homelab
+## Security Features
 
-2026
+- Endpoint monitoring
+- Event collection
+- Log analysis
+- Security alerts
+- Windows Event Logs
+- Linux system logs
+- Sysmon integration
+- Agent management
+
+---
+
+# 📸 Project Gallery
+
+## Infrastructure
+
+> *(Insert Proxmox screenshot)*
+
+## pfSense
+
+> *(Insert Firewall / VLAN screenshot)*
+
+## Active Directory
+
+> *(Insert AD Users & Computers screenshot)*
+
+## Certificate Authority
+
+> *(Insert CA screenshot)*
+
+## File Server
+
+> *(Insert SMB/File Share screenshot)*
+
+## Wazuh Dashboard
+
+> *(Insert Wazuh Dashboard screenshot)*
+
+## Prometheus
+
+> *(Insert Prometheus Targets screenshot)*
+
+## Grafana
+
+> *(Insert Grafana Dashboard screenshot)*
+
+## Ansible
+
+> *(Insert successful Ansible playbook execution)*
+
+---
+
+# 💼 Skills Demonstrated
+
+This project demonstrates practical experience with:
+
+## Windows Administration
+
+- Active Directory Domain Services
+- Group Policy
+- DNS
+- Certificate Services (AD CS)
+- SMB File Services
+- Windows Administration
+
+## Linux Administration
+
+- Debian Server
+- Systemd
+- SSH
+- Package Management
+- Performance Monitoring
+
+## Networking
+
+- VLAN Design
+- Routing
+- Firewall Configuration
+- DNS
+- DHCP
+- Network Segmentation
+
+## Infrastructure Automation
+
+- Ansible
+- YAML
+- Jinja2
+- Role-Based Automation
+- Infrastructure as Code
+
+## Monitoring
+
+- Prometheus
+- Windows Exporter
+- Node Exporter
+- Metrics Collection
+- Dashboard Integration
+
+## Security
+
+- Wazuh SIEM
+- Endpoint Monitoring
+- Security Event Analysis
+- Log Collection
+
+## Documentation
+
+- Architecture documentation
+- Deployment documentation
+- Troubleshooting guides
+- Network documentation
+- Infrastructure diagrams
+
+---
+
+# 📖 Lessons Learned
+
+Throughout this project I gained practical experience in:
+
+- Designing enterprise network architectures
+- Building a multi-server Active Directory environment
+- Implementing enterprise PKI
+- Automating infrastructure deployments using Ansible
+- Deploying centralized monitoring across Windows and Linux
+- Configuring SIEM-based security monitoring
+- Troubleshooting enterprise services
+- Creating professional technical documentation
+
+---
+
+# 🚀 Future Improvements
+
+Planned enhancements include:
+
+- Grafana dashboard provisioning with Ansible
+- HTTPS for internal services
+- Automated backups
+- Prometheus Alertmanager
+- Email alerting
+- High Availability (HA) Proxmox cluster
+- Additional Linux servers
+- Containerized applications
+- Kubernetes integration
+- CI/CD pipeline automation
+
+---
+
+# 📂 Project Documentation
+
+Detailed documentation is available in the `docs/` directory.
+
+- Infrastructure deployment
+- Network configuration
+- Active Directory implementation
+- Wazuh configuration
+- Monitoring configuration
+- Troubleshooting guides
+
+---
+
+# 👨‍💻 About the Author
+
+This project was created as part of my professional systems administration portfolio to demonstrate hands-on experience with enterprise infrastructure, automation, monitoring, and security technologies.
+
+**Core Technologies**
+
+- Windows Server
+- Active Directory
+- Linux
+- Proxmox VE
+- pfSense
+- Ansible
+- Prometheus
+- Wazuh
+- Git & GitHub
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
+
+ZEMLAH!!!

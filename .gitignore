@@ -17,3 +17,11 @@ Thumbs.db
 
 # Temporary files
 *.tmp
+
+# ==========================
+# Ansible secrets
+# ==========================
+ansible/group_vars/vault.yml
+
+# Backup files
+*.bak

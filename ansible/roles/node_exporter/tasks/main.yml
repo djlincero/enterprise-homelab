@@ -33,3 +33,6 @@
       Node Exporter is running successfully on {{ inventory_hostname }}
       and the metrics endpoint returned HTTP
       {{ node_exporter_metrics.status }}.
+  when:
+    - not ansible_check_mode
+    - node_exporter_metrics is defined

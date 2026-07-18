@@ -1,0 +1,7 @@
+---
+- name: Configure Prometheus
+  hosts: monitoring
+  become: true
+
+  roles:
+    - prometheus

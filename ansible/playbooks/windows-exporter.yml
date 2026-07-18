@@ -1,0 +1,7 @@
+---
+- name: Deploy Windows Exporter
+  hosts: windows
+  gather_facts: true
+
+  roles:
+    - windows_exporter

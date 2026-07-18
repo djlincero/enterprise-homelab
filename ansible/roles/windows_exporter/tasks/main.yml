@@ -1,0 +1,32 @@
+---
+- name: Ensure C:\Temp exists
+  ansible.windows.win_file:
+    path: C:\Temp
+    state: directory
+
+- name: Copy Windows Exporter installer
+  ansible.windows.win_copy:
+    src: "{{ windows_exporter_source }}"
+    dest: "{{ windows_exporter_destination }}"
+
+- name: Install Windows Exporter
+  ansible.windows.win_package:
+    path: "{{ windows_exporter_destination }}"
+    state: present
+  notify: Restart Windows Exporter
+
+- name: Ensure Windows Exporter service is enabled and running
+  ansible.windows.win_service:
+    name: "{{ windows_exporter_service }}"
+    state: started
+    start_mode: auto
+
+- name: Verify Windows Exporter service
+  ansible.windows.win_shell: |
+    Get-Service windows_exporter
+  register: windows_exporter_service_status
+  changed_when: false
+
+- name: Display service status
+  ansible.builtin.debug:
+    var: windows_exporter_service_status.stdout_lines

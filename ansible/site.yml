@@ -1,4 +1,12 @@
 ---
+# =====================================================
+# Enterprise Homelab Deployment
+# =====================================================
+
 - import_playbook: playbooks/baseline-linux.yml
 
 - import_playbook: playbooks/baseline-windows.yml
+
+- import_playbook: playbooks/wazuh-agent.yml
+
+- import_playbook: playbooks/node-exporter.yml
